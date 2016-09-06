@@ -1,0 +1,4 @@
+
+public enum MomentNodeLabel {
+	INTERMEDIATE, CLOSED, UNPROMISING, INFREQUENT
+}

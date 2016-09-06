@@ -1,19 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class FPTree {
-	FPNode root;
+public class FPHeaders {
 	List<FPNode> headers;
-	public FPTree() {
-		this.root = null;
+	public FPHeaders() {
 		this.headers = new ArrayList<>();
 	}
-	
-	public FPTree(FPNode root) {
-		this.root = root;
-		this.headers = new ArrayList<>();
-	}
-	
+		
 	public void add(FPNode node){
 		if(!this.headers.contains(node)){
 			this.headers.add(node);
@@ -40,11 +33,20 @@ public class FPTree {
 		}
 		
 		return frequency;
-		
 	}
 	
-
-	
-	
-
+	public int calculateTidSum(List<Integer> items){
+		int index = this.headers.indexOf(new FPNode(items.get(0),null));
+		if (index == -1)
+			return 0;
+		
+		FPNode header = this.headers.get(index);
+		int tidSum = 0;
+		while(header!=null){
+			tidSum+=header.calculateTidSum(items);
+			header = header.next;
+		}
+		
+		return tidSum;
+	}
 }
