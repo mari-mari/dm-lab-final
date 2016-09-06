@@ -13,7 +13,7 @@ public class FPNode {
 		this.parent = parent;
 		this.children = new ArrayList<>();
 		this.tidlist = new ArrayList<>();
-		this.frequency = 1;
+		this.frequency = 0;
 
 	}
 
@@ -47,11 +47,8 @@ public class FPNode {
 			FPNode node = new FPNode(items.get(0), this);
 			this.children.add(node);
 			headers.add(node);
-			items.remove(0);
-
 			node.add(items, tid, headers);
-			node.tidSum += tid;
-			node.tidlist.add(tid);
+			
 
 		}
 	}
